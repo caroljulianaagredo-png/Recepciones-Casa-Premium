@@ -1,0 +1,33 @@
+Carol Agredo
+login
+r.f 1.1
+Se capturarán: Nombres completos,apellidos,tipo y número de documento, correo electrónico (formato RFC), teléfono (10 dígitos) y contraseña (min. 8 caracteres)
+r.f 1.2
+El sistema validará que el correo y la contraseña coincidan con la base de datos y asignará el rol correspondientes (Admin/Cliente),credenciales de acceso y registro de logs (fecha/hora de entrada),gestion de inventario
+inventario
+r.f 2.1
+Se requiere: Nombre del artículo (sillas, manteles, cubiertos), cantidad en stock, estado (bueno/regular) y color/estilo. Código único (SKU), nombre del artículo, cantidad total, cantidad disponible, estado (bueno/regular/dañado) y categoría.
+r.f 2.2
+Comparación automática entre la cantidad requerida en la reserva y el saldo disponible en la tabla de inventario. ID del evento, cantidad retirada, motivo de la baja y firma digital del responsable de bodega.
+
+Ximenaleon
+r.f 2.3
+Se debe seleccionar: Tipo de evento (Boda, 15 años, Prom), fecha (no anterior a la actual), hora de inicio, número de invitados (mín. 50 - máx. 300) y descripción de decoración.
+Modulo de inventario
+r.f 3.1
+Para cada artículo se registrará: Nombre (ej. Silla Tiffany), Cantidad total, Cantidad disponible, Color y Estado (Óptimo, En reparación, De baja) Fecha del evento, hora inicio/fin, tipo de evento (Boda, XV años, etc.), salón asignado y cliente responsable.
+r.f 3.2
+Al confirmar un evento de 100 personas, el sistema restará 100 sillas y 10 mesas del stock disponible para esa fecha específica.Interfaz gráfica de calendario con filtros por salón y estado de pago.
+r.f 4.1
+Se registrará el valor del abono, fecha, medio de pago (Efectivo/Transferencia) y el sistema generará un comprobante numerado en formato PDF.Lista de servicios seleccionados, IVA (19%), subtotal, descuentos aplicados y total en pesos colombianos (COP).
+
+Alejandra Bazan
+Modulos de pago
+r.f 4.2
+El cálculo será: (Valor del Paquete × Nro. Invitados) + Servicios adicionales (DJ, Luces, etc.) - Total de abonos realizados. ID de cotización, monto abonado, método de pago (Efectivo/Transferencia) y saldo actual.
+r.f 4.3
+Matriz de permisos por módulo, nombre del cargo y estado del empleado (Activo/Inactivo).
+r.f 4.4
+ Matriz de permisos por módulo, nombre del cargo y estado del empleado (Activo/Inactivo).
+r.f 4.5
+unir todo
