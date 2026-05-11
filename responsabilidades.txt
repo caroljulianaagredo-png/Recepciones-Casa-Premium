@@ -1,35 +1,55 @@
-Carol Agredo
-LOGIN
+Carol
+login
 r.f 1.1
-Se capturarán: Nombres completos,apellidos,tipo y número de documento, correo electrónico (formato RFC), teléfono (10 dígitos) y contraseña (min. 8 caracteres)
+El sistema contará con la opción de registro para nuevos usuarios (Administradores y Clientes). Debe validar que el correo no esté duplicado y que la contraseña cumpla con políticas de seguridad (mín. 8 caracteres, números y símbolos).
+r.i 1.1
+Se capturarán: nombres completos, apellidos, tipo y número de documento, correo electrónico, teléfono (10 dígitos) y contraseña (mín. 8 caracteres).
 r.f 1.2
-El sistema validará que el correo y la contraseña coincidan con la base de datos y asignará el rol correspondientes (Admin/Cliente),credenciales de acceso y registro de logs (fecha/hora de entrada),gestion de inventario
-INVENTARIO 
+El sistema permitirá el inicio de sesión mediante credenciales validadas por correo y contraseña. Tras 3 intentos fallidos, el usuario será bloqueado temporalmente por 15 minutos..
+r.i 1.2
+El sistema validará que el correo y la contraseña coincidan con la base de datos, asignará el rol correspondiente (Admin/Cliente) y registrará logs de acceso (fecha y hora de entrada).
+r.f 1.3
+El sistema brinda la opción de recuperar la contraseña olvidada, enviando un código o enlace de verificación a la dirección de correo electrónico registrada para generar una nueva contraseña segura.
+r.i 1.3
+El sistema pedirá al usuario su correo electrónico y comprobará que se encuentra en la base de datos. Le mandará un código o un enlace de recuperación con tiempo limitado. Se anotarán características tales como: Código de verificación, nueva contraseña (mínimo 8 caracteres, con números y símbolos), fecha de caducidad, ID de usuario y correo electrónico.
+INVENTARIO
 r.f 2.1
+El sistema permitirá el registro y actualización de insumos del salón.El sistema permitirá registrar, consultar y actualizar el stock de menaje (sillas, mesas, manteles). Debe emitir una alerta visual en el dashboard cuando un artículo baje del 10% de su existencia total.
+r.i 2.1
 Se requiere: Nombre del artículo (sillas, manteles, cubiertos), cantidad en stock, estado (bueno/regular) y color/estilo. Código único (SKU), nombre del artículo, cantidad total, cantidad disponible, estado (bueno/regular/dañado) y categoría.
+Ximena
 r.f 2.2
+El sistema generará alertas automáticas cuando el inventario sea insuficiente para un evento.El sistema permitirá generar reportes de bajas de inventario, justificando si el artículo se perdió o se rompió durante un evento específico para ajustar el saldo contable.
+r.i 2.2
 Comparación automática entre la cantidad requerida en la reserva y el saldo disponible en la tabla de inventario. ID del evento, cantidad retirada, motivo de la baja y firma digital del responsable de bodega.
-
-Ximenaleon
 r.f 2.3
+El sistema permitirá crear una reserva para eventos sociales.
+r.i 2.3
 Se debe seleccionar: Tipo de evento (Boda, 15 años, Prom), fecha (no anterior a la actual), hora de inicio, número de invitados (mín. 50 - máx. 300) y descripción de decoración.
-MODULO DEL INVENTARIO
+MODULO INVENTARIO
 r.f 3.1
+El sistema debe permitir el control de stock de activos (mobiliario y mantelería).El sistema permitirá agendar eventos sociales validando la disponibilidad de salones y fechas. No permitirá duplicar reservas en el mismo horario para el mismo salón.
+r.i 3.1
 Para cada artículo se registrará: Nombre (ej. Silla Tiffany), Cantidad total, Cantidad disponible, Color y Estado (Óptimo, En reparación, De baja) Fecha del evento, hora inicio/fin, tipo de evento (Boda, XV años, etc.), salón asignado y cliente responsable.
 r.f 3.2
+El sistema debe descontar automáticamente los insumos usados en un evento.El sistema permitirá visualizar un calendario interactivo mensual y semanal donde se muestren los eventos confirmados y las fechas bloqueadas por mantenimiento.
+r.i 3.2
 Al confirmar un evento de 100 personas, el sistema restará 100 sillas y 10 mesas del stock disponible para esa fecha específica.Interfaz gráfica de calendario con filtros por salón y estado de pago.
-MODULOS DE PAGO
+Alejandra
+MODULO DE PAGO
 r.f 4.1
-Se registrará el valor del abono, fecha, medio de pago (Efectivo/Transferencia) y el sistema generará un comprobante numerado en formato PDF.Lista de servicios seleccionados, IVA (19%), subtotal, descuentos aplicados y total en pesos colombianos (COP).
-
-Alejandra Bazan
+El sistema permitirá el registro de abonos y generación de estados de cuenta.El sistema permitirá crear cotizaciones dinámicas sumando servicios (catering, salón, música). La cotización tendrá una validez automática de 15 días calendario.
+r.i 4.1
+El sistema permitirá registrar abonos y generar estados de cuenta, así como crear cotizaciones dinámicas sumando servicios (catering, salón, música), con una validez automática de 15 días. Incluirá atributos como: ID de cotización, fecha de creación, fecha de vencimiento, lista de servicios seleccionados, valor de cada servicio, subtotal, IVA (19%), descuentos aplicados y total en pesos colombianos (COP). Para los abonos se registrará: ID de abono, valor abonado, fecha, método de pago (efectivo/transferencia) y se generará automáticamente un comprobante numerado en formato PDF.
 r.f 4.2
-El cálculo será: (Valor del Paquete × Nro. Invitados) + Servicios adicionales (DJ, Luces, etc.) - Total de abonos realizados. ID de cotización, monto abonado, método de pago (Efectivo/Transferencia) y saldo actual.
+El sistema debe calcular el costo total y el saldo pendiente del evento.El sistema permitirá registrar abonos a los eventos y generar automáticamente una factura electrónica (o comprobante de pago) indicando el saldo pendiente.
+r.i 4.2
+El sistema realizará el cálculo del costo total del evento mediante la fórmula (Valor del paquete × número de invitados) + servicios adicionales (DJ, luces, etc.) - total de abonos realizados. Incluirá atributos como: ID de cotización, valor del paquete, número de invitados, lista de servicios adicionales, subtotal, total de abonos, saldo pendiente, monto abonado, fecha de abono, método de pago (efectivo/transferencia) y generación de factura o comprobante de pago.
+MANTENIMIENTO DE ROLES
+r.f 5.1
+El sistema permitirá al Administrador crear y modificar perfiles de empleados, asignando permisos específicos de CRUD (Crear, Consultar, Modificar, Eliminar) según su cargo.
+r.i 5.1
+Matriz de permisos por módulo donde el Administrador asigna accesos según el cargo del empleado, incluyendo atributos como: nombre del cargo, tipo de empleado, módulo, permisos CRUD (Crear, Consultar, Modificar, Eliminar) y estado del empleado (Activo/Inactivo). Permite restringir el acceso cuando esté inactivo y actualizar roles y permisos.
 
-MANTENIMIENTOS Y ROLES
-R.F 5.1
- Matriz de permisos por módulo, nombre del cargo y estado del empleado (Activo/Inactivo).
-r.f 5.2
-unir todo
-r.f 5.3
-revisar el funcionamiento
+
+
