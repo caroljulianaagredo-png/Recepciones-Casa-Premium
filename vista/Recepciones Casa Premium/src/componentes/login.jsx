@@ -2,9 +2,18 @@ import React, { useState } from 'react';
 
 const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
+
   const [formData, setFormData] = useState({
-    email: '', password: '', names: '', lastNames: '', docType: '', docNum: '', phone: ''
+    email: '',
+    password: '',
+    names: '',
+    lastNames: '',
+    docType: '',
+    docNum: '',
+    phone: ''
   });
+
+  const [mensaje, setMensaje] = useState("");
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -14,10 +23,10 @@ const AuthPage = () => {
     e.preventDefault();
     // RF 1.1: Validar contraseña (min 8 caracteres, números y símbolos)
     const passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
-    if (!passwordRegex.test(formData.password)) {
-      alert("La contraseña debe tener mínimo 8 caracteres, números y símbolos.");
-      return;
-    }
+    // if (!passwordRegex.test(formData.password)) {
+    //   alert("La contraseña debe tener mínimo 8 caracteres, números y símbolos.");
+    //   return;
+    // }
     console.log(isLogin ? "Iniciando sesión..." : "Registrando usuario...", formData);
   };
 
